@@ -6,8 +6,5 @@
 
 namespace FileNav{
 	//TODO: Call Locate all root drives function
-	std::vector<std::filesystem::path> getRootPaths();
+	std::vector<std::string> getRootPaths();
 }
-
-
-
