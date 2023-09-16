@@ -1,8 +1,8 @@
 #include <iostream>
-#include "FileNavigation/FileNavigation.h"
+#include "Directory/Directory.h"
 
 int main() {
-
-	FileNav::getRootPaths();
+	Directory directory;
+	directory.getRootPaths();
 	return 0;
 }

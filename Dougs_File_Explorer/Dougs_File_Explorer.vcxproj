@@ -128,11 +128,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="FileNavigation\FileNavigation.cpp" />
+    <ClCompile Include="Directory\Directory.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FileNavigation\FileNavigation.h" />
+    <ClInclude Include="Directory\Directory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

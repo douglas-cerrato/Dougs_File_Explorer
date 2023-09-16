@@ -4,7 +4,10 @@
 #include <filesystem>
 #include <vector>
 
-namespace FileNav{
-	//TODO: Call Locate all root drives function
-	std::vector<std::string> getRootPaths();
-}
+class Directory
+{
+    private:
+    public:
+        std::vector<std::string> getRootPaths();
+    
+};

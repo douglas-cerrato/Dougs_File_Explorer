@@ -1,8 +1,8 @@
-#include "FileNavigation.h"
+#include "Directory.h"
 #include <Windows.h>
 #include <iostream>
 
-std::vector<std::string> FileNav::getRootPaths()
+std::vector<std::string> Directory::getRootPaths()
 {
     //Buffer Length
     DWORD dw_mydrives = 100;
