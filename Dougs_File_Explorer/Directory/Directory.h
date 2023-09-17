@@ -4,10 +4,9 @@
 #include <filesystem>
 #include <vector>
 
-class Directory
-{
+class Directory{
     private:
     public:
-        std::vector<std::string> getRootPaths();
+        std::vector<std::string> getDrives();
     
 };

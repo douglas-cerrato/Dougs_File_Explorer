@@ -2,7 +2,7 @@
 #include <Windows.h>
 #include <iostream>
 
-std::vector<std::string> Directory::getRootPaths()
+std::vector<std::string> Directory::getDrives()
 {
     //Buffer Length
     DWORD dw_mydrives = 100;
@@ -40,7 +40,7 @@ std::vector<std::string> Directory::getRootPaths()
                 //Compares char in LPWSTR to backslash to look for the end of the drive name
                 if(mydrives[i]=='\\'){
                     //Drive Name String complete, append to vector and reset
-                    std::cout << "Current Complete Drive: " << current_drive << std::endl;
+                    //std::cout << "Current Complete Drive: " << current_drive << std::endl;
                     vect_root_dir.push_back(current_drive);
                     current_drive = "";
                 }
