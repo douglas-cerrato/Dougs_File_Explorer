@@ -2,14 +2,14 @@
 #include <Windows.h>
 #include <iostream>
 
-std::vector<std::string> Directory::getDrives()
+std::vector<std::string> *Directory::getDrives()
 {
     //Buffer Length
     DWORD dw_mydrives = 100;
     //Buffer for drive storage
     char mydrives[100];
     int drives_length = GetLogicalDriveStrings(dw_mydrives, (LPWSTR)mydrives);
-    std::vector<std::string> vect_root_dir;
+    std::vector<std::string>* vect_root_dir = new std::vector<std::string>();
     
     if(mydrives == 0)
     {
@@ -41,13 +41,20 @@ std::vector<std::string> Directory::getDrives()
                 if(mydrives[i]=='\\'){
                     //Drive Name String complete, append to vector and reset
                     //std::cout << "Current Complete Drive: " << current_drive << std::endl;
-                    vect_root_dir.push_back(current_drive);
+                    vect_root_dir->push_back(current_drive);
                     current_drive = "";
                 }
             }
         }
     }
+    //returns pointer to this vector
     return vect_root_dir;
 }
 
- 
+std::vector<std::filesystem::path> *Directory::cacheContents(std::string current_path){
+    std::vector<std::filesystem::path> *currentContents = new std::vector<std::filesystem::path>();
+    std::filesystem::path currentPath = current_path;
+    std::cout << "Current Path we are working with is " << currentPath.string() << std::endl;
+
+    return currentContents;
+}

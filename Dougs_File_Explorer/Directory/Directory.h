@@ -7,6 +7,6 @@
 class Directory{
     private:
     public:
-        std::vector<std::string> getDrives();
-    
+        std::vector<std::string> *getDrives();
+        std::vector<std::filesystem::path> *cacheContents(std::string current_path);
 };

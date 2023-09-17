@@ -5,12 +5,20 @@
 
 int main() {
 	Directory directory;
-	std::vector<std::string> drives = directory.getDrives();
+	//declares drives to pointer of vector of drives
+	std::vector<std::string>* drives = directory.getDrives();
 	
 	std::cout << "Grabbing Drives...\n" << "Pick a drive:\n";
-	for(int i = 0; i < drives.size();i++){
-		std::cout << "Drive " << i << ": " << drives[i] << std::endl;
+	int index = 0;
+	for (const std::string &drive : *drives) {
+		std::cout << "Drive " << index << ": "<< drive << std::endl;
+		index++;
 	}
-	
+	int response;
+	std::cin >> response;
+
+	directory.cacheContents(drives->at(response));
+
+	delete drives;
 	return 0;
 }
