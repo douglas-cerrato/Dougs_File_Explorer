@@ -1,24 +1,25 @@
 #include <iostream>
 #include <Windows.h>
 
-#include "Directory/Directory.h"
+#include "Systems\System.h"
 
 int main() {
-	Directory directory;
+	System thisComputer;
 	//declares drives to pointer of vector of drives
-	std::vector<std::string>* drives = directory.getDrives();
-	
 	std::cout << "Grabbing Drives...\n" << "Pick a drive:\n";
-	int index = 0;
-	for (const std::string &drive : *drives) {
-		std::cout << "Drive " << index << ": "<< drive << std::endl;
-		index++;
+	
+	for (int i = 0; i < thisComputer.currentDrives.size(); i++) {
+		std::cout << "Drive " << i << ": " << thisComputer.currentDrives[i] << std::endl;
 	}
-	int response;
-	std::cin >> response;
 
-	directory.cacheContents(drives->at(response));
+	/*
+	Sleep(1000*60);
+	thisComputer.getDrives();
 
-	delete drives;
+	for (int i = 0; i < thisComputer.currentDrives.size(); i++) {
+		std::cout << "Drive " << i << ": " << thisComputer.currentDrives[i] << std::endl;
+	}
+	*/
+	
 	return 0;
 }
