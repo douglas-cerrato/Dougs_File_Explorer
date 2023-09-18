@@ -1,4 +1,5 @@
 #include "System.h"
+#include <Windows.h>
 
 void System::getDrives()
 {
@@ -50,3 +51,22 @@ void System::getDrives()
     this->currentDrives = vect_root_dir;
 }
 
+void Pathing::cachePaths(){
+    try{ 
+        for(const auto& entry : std::filesystem::directory_iterator(this->Path))
+        {
+            std::filesystem::path pathingDir = entry.path();
+            if(entry.is_directory()){
+                //std::cout << "Inserting into ordered map a Folder\n";
+                this->cachedPath.insert({1, Folder(pathingDir)});
+            }
+            else{
+                //std::cout << "Inserting into ordered map a File\n";
+                this->cachedPath.insert({0, File(pathingDir)});
+            }
+        }
+    }catch(...)
+    {
+        std::cout << "Error: Access Denied" << std::endl;
+    }
+}
