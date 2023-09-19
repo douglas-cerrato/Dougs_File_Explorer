@@ -23,30 +23,30 @@ class Pathing{
     public:
         Pathing(std::string Path) : Path(Path){}
         std::string Path;
-        std::unordered_multimap<bool, Pathing> cachedPath;
+        std::unordered_multimap<bool, std::filesystem::path> cachedPath;
         void cachePaths();
 };
 
-class File : public Pathing{
+class File{
     private:
     public:
-        std::string Name;
-        int size;
-        File(std::filesystem::path& filePath) : Pathing(filePath.string()){
-            this->Name = filePath.filename().string();
+        std::string name;
+        long size;
+        File(std::filesystem::path& filePath){
+            this->name = filePath.filename().string();
             this->size = file_size(filePath);
         }
         
         
 };
 
-class Folder : public Pathing{
+class Folder{
     private:
     public:
-        std::string Name;
-        int size;
-        Folder(std::filesystem::path& folderPath) : Pathing(folderPath.string()){
-            this->Name = folderPath.filename().string();
+        std::string name;
+        long size;
+        Folder(std::filesystem::path& folderPath){
+            this->name = folderPath.filename().string();
             this->size = file_size(folderPath);
         }
 };

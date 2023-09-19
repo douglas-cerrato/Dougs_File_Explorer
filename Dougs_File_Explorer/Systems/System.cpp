@@ -58,11 +58,11 @@ void Pathing::cachePaths(){
             std::filesystem::path pathingDir = entry.path();
             if(entry.is_directory()){
                 //std::cout << "Inserting into ordered map a Folder\n";
-                this->cachedPath.insert({1, Folder(pathingDir)});
+                this->cachedPath.insert({1, pathingDir});
             }
             else{
                 //std::cout << "Inserting into ordered map a File\n";
-                this->cachedPath.insert({0, File(pathingDir)});
+                this->cachedPath.insert({0, pathingDir});
             }
         }
     }catch(...)
