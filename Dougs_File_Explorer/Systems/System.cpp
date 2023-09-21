@@ -7,10 +7,10 @@ void System::getDrives()
     DWORD dw_mydrives = 100;
     //Buffer for drive storage
     char mydrives[100];
-    int drives_length = GetLogicalDriveStrings(dw_mydrives, (LPWSTR)mydrives);
+    const int drives_length = GetLogicalDriveStrings(dw_mydrives, (LPWSTR)mydrives);
     std::vector<std::string> vect_root_dir;
     
-    if(mydrives == 0)
+    if(mydrives == nullptr)
     {
         std::cout << "Error Returning Drives or No Drives but.....\n";
         GetLastError();
@@ -27,7 +27,7 @@ void System::getDrives()
         for(int i=0;i<100;i++)
         {
             //Going through nulls in LPWSTR and skipping them
-            if(mydrives[i]==NULL)
+            if(mydrives[i]=='\0')
             {
                 nullcounter++;
                 if(nullcounter == 4){break;}
@@ -53,8 +53,7 @@ void System::getDrives()
 
 void Pathing::cachePaths(){
     try{ 
-        for(const auto& entry : std::filesystem::directory_iterator(this->Path))
-        {
+        for(const auto& entry : std::filesystem::directory_iterator(this->Path)){
             std::filesystem::path pathingDir = entry.path();
             if(entry.is_directory()){
                 //std::cout << "Inserting into ordered map a Folder\n";
@@ -64,6 +63,10 @@ void Pathing::cachePaths(){
                 //std::cout << "Inserting into ordered map a File\n";
                 this->cachedPath.insert({0, pathingDir});
             }
+        }
+        //TODO: Fix This 
+        if(previousPath == nullptr){
+             std::unordered_multimap<bool, std::filesystem::path> previousPath = new this->cachedPath;
         }
     }catch(...)
     {

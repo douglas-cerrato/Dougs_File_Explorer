@@ -20,6 +20,9 @@ class System{
 //TODO: Understanding Classes
 
 class Pathing{
+    private:
+        //TODO: Figure out how to do this right right or replace with a different idea
+        std::unordered_multimap<bool, std::filesystem::path> *previousPath;    
     public:
         Pathing(std::string Path) : Path(Path){}
         std::string Path;
